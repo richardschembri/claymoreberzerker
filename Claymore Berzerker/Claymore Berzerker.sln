@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2015
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Claymore Berzerker", "Claymore Berzerker.csproj", "{F9443ECA-C282-4C98-1485-75AE30310807}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Claymore Berzerker.Editor", "Claymore Berzerker.Editor.csproj", "{D655B2EF-22FA-7765-6DF8-18FE9CC90B9D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{F9443ECA-C282-4C98-1485-75AE30310807}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9443ECA-C282-4C98-1485-75AE30310807}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9443ECA-C282-4C98-1485-75AE30310807}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D655B2EF-22FA-7765-6DF8-18FE9CC90B9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D655B2EF-22FA-7765-6DF8-18FE9CC90B9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D655B2EF-22FA-7765-6DF8-18FE9CC90B9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D655B2EF-22FA-7765-6DF8-18FE9CC90B9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -22,5 +22,10 @@ public class EnemyLogic : MonoBehaviour {
         {
             this.gameObject.transform.localPosition = new Vector3(lp.x + speed , lp.y, lp.z);
         }
+
+        if (this.gameObject.transform.localPosition.x < -2)
+        {
+            Destroy(this.gameObject);
+        }
 	}
 }
