@@ -5,6 +5,7 @@ public class Berzerker : MonoBehaviour {
 
 	public Animator TorsoAnim;					//reference to the animator component
     bool mainSwing = true;
+    public AudioSource SwordSound;
 
     const string ANIM_TRIGGER_ISATTACKING1 = "IsAttacking1";
     const string ANIM_TRIGGER_ISATTACKING2 = "IsAttacking2";
@@ -23,6 +24,10 @@ public class Berzerker : MonoBehaviour {
                 {
                     TorsoAnim.SetTrigger(ANIM_TRIGGER_ISATTACKING1);
                     mainSwing = false;
+                    if (!SwordSound.isPlaying)
+                    {
+                        SwordSound.Play();
+                    }
                 }
             }
             else
@@ -31,6 +36,10 @@ public class Berzerker : MonoBehaviour {
                 {
                     TorsoAnim.SetTrigger(ANIM_TRIGGER_ISATTACKING2);
                     mainSwing = true;
+                    if (!SwordSound.isPlaying)
+                    {
+                        SwordSound.Play();
+                    }
                 }
             }
 
