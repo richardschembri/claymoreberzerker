@@ -28,4 +28,18 @@ public class EnemyLogic : MonoBehaviour {
             Destroy(this.gameObject);
         }
 	}
+
+    void OnTriggerEnter(Collider other)
+    {
+    
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Collision Hit");
+        if (collision.tag == "PlayerWeapon")
+        {
+            Debug.Log("Enemy Hit");
+        }
+    }
 }
