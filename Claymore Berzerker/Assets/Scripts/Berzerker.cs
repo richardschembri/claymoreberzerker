@@ -10,6 +10,7 @@ public class Berzerker : MonoBehaviour {
 
     const string ANIM_TRIGGER_ISATTACKING1 = "IsAttacking1";
     const string ANIM_TRIGGER_ISATTACKING2 = "IsAttacking2";
+    const string ANIM_TRIGGER_ISATTACKING3 = "IsAttacking3";
     // Use this for initialization
     void Start () {
 	
@@ -35,7 +36,7 @@ public class Berzerker : MonoBehaviour {
             {
                 if (TorsoAnim.GetCurrentAnimatorStateInfo(0).IsName("Torso_Run"))
                 {
-                    TorsoAnim.SetTrigger(ANIM_TRIGGER_ISATTACKING2);
+                    TorsoAnim.SetTrigger(ANIM_TRIGGER_ISATTACKING3);
                     mainSwing = true;
                     if (!SwordSound.isPlaying)
                     {
