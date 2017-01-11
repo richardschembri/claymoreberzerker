@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyLogic : MonoBehaviour {
 
     public float speed = 1f;
+    public bool IsAlive = true;
+    public int EnemyScore;
 	// Use this for initialization
 	void Start () {
 		
@@ -29,17 +31,12 @@ public class EnemyLogic : MonoBehaviour {
         }
 	}
 
-    void OnTriggerEnter(Collider other)
-    {
-    
-    }
-
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Collision Hit");
         if (collision.tag == "PlayerWeapon")
         {
-            Debug.Log("Enemy Hit");
+            IsAlive = false;
+            Berzerker.HighScore += EnemyScore;
         }
     }
 }

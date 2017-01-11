@@ -6,6 +6,7 @@ public class Berzerker : MonoBehaviour {
 	public Animator TorsoAnim;					//reference to the animator component
     bool mainSwing = true;
     public AudioSource SwordSound;
+    public static int HighScore = 0;
 
     const string ANIM_TRIGGER_ISATTACKING1 = "IsAttacking1";
     const string ANIM_TRIGGER_ISATTACKING2 = "IsAttacking2";
