@@ -16,35 +16,24 @@ public class Berzerker : MonoBehaviour {
 	
 	}
 	
-	// Update is called once per frame
-	void Update () {
+    void FixedUpdate()
+    {
         if (Input.GetKeyUp(KeyCode.Space))
         {
+            Debug.Log("Spave bar pressed");
             if (mainSwing)
             {
-                if (TorsoAnim.GetCurrentAnimatorStateInfo(0).IsName("Torso_Run"))
-                {
                     TorsoAnim.SetTrigger(ANIM_TRIGGER_ISATTACKING1);
                     mainSwing = false;
-                    if (!SwordSound.isPlaying)
-                    {
-                        SwordSound.Play();
-                    }
-                }
             }
             else
             {
-                if (TorsoAnim.GetCurrentAnimatorStateInfo(0).IsName("Torso_Run"))
-                {
                     TorsoAnim.SetTrigger(ANIM_TRIGGER_ISATTACKING3);
                     mainSwing = true;
-                    if (!SwordSound.isPlaying)
-                    {
-                        SwordSound.Play();
-                    }
-                }
             }
-
         }	
+    }
+	// Update is called once per frame
+	void Update () {
 	}
 }
