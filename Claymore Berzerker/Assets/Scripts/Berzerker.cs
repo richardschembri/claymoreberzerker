@@ -8,9 +8,9 @@ public class Berzerker : MonoBehaviour {
     public AudioSource SwordSound;
     public static int HighScore = 0;
 
-    const string ANIM_TRIGGER_ISATTACKING1 = "IsAttacking1";
-    const string ANIM_TRIGGER_ISATTACKING2 = "IsAttacking2";
-    const string ANIM_TRIGGER_ISATTACKING3 = "IsAttacking3";
+    public const string ANIM_TRIGGER_ISATTACKING1 = "IsAttacking1";
+    public const string ANIM_TRIGGER_ISATTACKING2 = "IsAttacking2";
+    public const string ANIM_TRIGGER_ISATTACKING3 = "IsAttacking3";
     // Use this for initialization
     void Start () {
 	
