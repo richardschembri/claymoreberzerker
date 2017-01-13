@@ -6,7 +6,20 @@ public class EnemyLogic : MonoBehaviour {
 
 	public Animator TorsoAnim;					
     public float speed = 1f;
-    public bool IsAlive = true;
+
+    private bool isAlive = true;
+    public bool IsAlive
+    {
+        get
+        {
+            return isAlive;
+        }
+        private set
+        {
+            isAlive = value;
+        }
+    }
+
     public int EnemyScore;
     public Berzerker Player;
 	// Use this for initialization
@@ -42,7 +55,12 @@ public class EnemyLogic : MonoBehaviour {
 
     public void Attack()
     {
-        TorsoAnim.SetTrigger(Berzerker.ANIM_TRIGGER_ISATTACKING1);
+        TorsoAnim.SetTrigger(BerzerkerAttackLogic.ANIM_TRIGGER_ISATTACKING1);
+    }
+
+    public void Die()
+    {
+        IsAlive = false;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
