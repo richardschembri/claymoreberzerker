@@ -6,6 +6,9 @@ public class EnemyLogic : MonoBehaviour {
 
 	public Animator TorsoAnim;					
     public float speed = 1f;
+    public GameObject FullBody;
+    public GameObject BodyParts;
+
 
     private bool isAlive = true;
     public bool IsAlive
@@ -29,6 +32,10 @@ public class EnemyLogic : MonoBehaviour {
 	// Update is called once per frame
 	void Update () { 
 
+        if (Input.GetKeyUp(KeyCode.R))
+        {
+            Destroy(this.gameObject);
+        }
         var lp = this.gameObject.transform.localPosition;
         if (this.gameObject.transform.localScale.x < 0)
         {
@@ -63,12 +70,16 @@ public class EnemyLogic : MonoBehaviour {
         IsAlive = false;
     }
 
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "PlayerWeapon")
         {
             IsAlive = false;
             Berzerker.HighScore += EnemyScore;
+            Debug.Log(Berzerker.HighScore);
+            BodyParts.SetActive(false);
+            FullBody.SetActive(true);
 
         }
     }

@@ -27,6 +27,7 @@ public class Spawner : MonoBehaviour {
 	    	
 	}
 
+
     IEnumerator SpawnGameObject()
     {
         yield return new WaitForSeconds(randSpawnTime);
