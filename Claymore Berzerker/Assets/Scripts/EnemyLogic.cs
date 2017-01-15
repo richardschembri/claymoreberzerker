@@ -9,6 +9,7 @@ public class EnemyLogic : MonoBehaviour {
     public GameObject FullBody;
     public GameObject BodyParts;
 
+    public AudioSource AttackSound;
 
     private bool isAlive = true;
     public bool IsAlive
@@ -63,6 +64,7 @@ public class EnemyLogic : MonoBehaviour {
     public void Attack()
     {
         TorsoAnim.SetTrigger(BerzerkerAttackLogic.ANIM_TRIGGER_ISATTACKING1);
+        AttackSound.Play();
     }
 
     public void Die()

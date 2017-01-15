@@ -8,6 +8,7 @@ public class BerzerkerAttackLogic : MonoBehaviour {
     bool mainSwing = true;
     int debugIndex = 0;
     
+    public AudioSource AttackSound;
 
     public const string ANIM_TRIGGER_ISATTACKING1 = "IsAttacking1";
     public const string ANIM_TRIGGER_ISATTACKING2 = "IsAttacking2";
@@ -39,6 +40,7 @@ public class BerzerkerAttackLogic : MonoBehaviour {
     void PerformAttack()
     {
             TorsoAnim.SetTrigger(ANIM_TRIGGER_ISATTACKING1);
+        AttackSound.Play();
     }
 
     void FixedUpdate()

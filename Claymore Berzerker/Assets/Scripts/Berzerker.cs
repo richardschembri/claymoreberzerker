@@ -5,6 +5,7 @@ public class Berzerker : MonoBehaviour {
 
     public static int HighScore = 0;
 
+
     float startX = 0;
     public float speed = 1f;
     private bool isAlive = true;
