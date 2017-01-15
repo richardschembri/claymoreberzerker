@@ -5,11 +5,15 @@ using UnityEngine;
 public class EnemyLogic : MonoBehaviour {
 
 	public Animator TorsoAnim;					
-    public float speed = 1f;
+    public float minspeed = 0.1f;
+    public float maxspeed = 0.25f;
+    private float speed = 0.1f;
     public GameObject FullBody;
     public GameObject BodyParts;
 
     public AudioSource AttackSound;
+
+    public ParticleSystem BloodSplatter;
 
     private bool isAlive = true;
     public bool IsAlive
@@ -25,9 +29,10 @@ public class EnemyLogic : MonoBehaviour {
     }
 
     public int EnemyScore;
-    public Berzerker Player;
+    //public Berzerker Player;
 	// Use this for initialization
 	void Start () {
+        speed = Random.Range(minspeed, maxspeed);
 	}
 	
 	// Update is called once per frame
@@ -65,11 +70,16 @@ public class EnemyLogic : MonoBehaviour {
     {
         TorsoAnim.SetTrigger(BerzerkerAttackLogic.ANIM_TRIGGER_ISATTACKING1);
         AttackSound.Play();
+        //BloodSplatter.Play();
     }
 
     public void Die()
     {
         IsAlive = false;
+        BloodSplatter.Play();
+        Berzerker.HighScore += EnemyScore;
+        BodyParts.SetActive(false);
+        FullBody.SetActive(true);
     }
 
 
@@ -77,11 +87,7 @@ public class EnemyLogic : MonoBehaviour {
     {
         if (collision.tag == "PlayerWeapon")
         {
-            IsAlive = false;
-            Berzerker.HighScore += EnemyScore;
-            BodyParts.SetActive(false);
-            FullBody.SetActive(true);
-
+            Die();
         }
     }
 }
