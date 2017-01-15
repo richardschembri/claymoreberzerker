@@ -77,7 +77,6 @@ public class EnemyLogic : MonoBehaviour {
         {
             IsAlive = false;
             Berzerker.HighScore += EnemyScore;
-            Debug.Log(Berzerker.HighScore);
             BodyParts.SetActive(false);
             FullBody.SetActive(true);
 

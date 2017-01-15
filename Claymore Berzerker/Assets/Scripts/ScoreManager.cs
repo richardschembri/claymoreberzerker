@@ -11,6 +11,6 @@ public class ScoreManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        this.gameObject.GetComponent<TextMesh>().text = Berzerker.HighScore.ToString();
+        this.gameObject.GetComponent<GUIText>().text = "Score: " + Berzerker.HighScore.ToString();
 	}
 }

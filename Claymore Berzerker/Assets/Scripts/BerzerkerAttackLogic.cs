@@ -6,7 +6,6 @@ public class BerzerkerAttackLogic : MonoBehaviour {
 
 	Animator TorsoAnim;					//reference to the animator component
     bool mainSwing = true;
-    public bool IsAttacking = false;
     int debugIndex = 0;
     
 
@@ -18,22 +17,36 @@ public class BerzerkerAttackLogic : MonoBehaviour {
     {
         TorsoAnim = gameObject.transform.GetComponent<Animator>();
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    // Update is called once per frame
+    void Update()
+    {
+
+        if (Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(1))
+        {
+            PerformAttack();
+        }
+
+        for (int i = 0; i < Input.touchCount; ++i)
+        {
+            if (Input.GetTouch(i).phase == TouchPhase.Began)
+            {
+                PerformAttack();
+            }
+        }
+    }
+
+    void PerformAttack()
+    {
+            TorsoAnim.SetTrigger(ANIM_TRIGGER_ISATTACKING1);
+    }
 
     void FixedUpdate()
     {
-        if (IsAttacking)
-        {
-            //return;
-        }
+        return;
         if (Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(1))
         {
             Debug.Log("Spave bar pressed" + debugIndex.ToString());
-            TorsoAnim.SetTrigger(ANIM_TRIGGER_ISATTACKING1);
             debugIndex++;
             /*
             if (mainSwing)
@@ -53,9 +66,10 @@ public class BerzerkerAttackLogic : MonoBehaviour {
         {
             if (Input.GetTouch(i).phase == TouchPhase.Began)
             {
-            Debug.Log("Spave bar pressed" + debugIndex.ToString());
-            TorsoAnim.SetTrigger(ANIM_TRIGGER_ISATTACKING1);
-            debugIndex++;
+                Debug.Log("Spave bar pressed" + debugIndex.ToString());
+                //TorsoAnim.SetTrigger(ANIM_TRIGGER_ISATTACKING1);
+                TorsoAnim.Play("Torso_Attack1");//.SetTrigger(ANIM_TRIGGER_ISATTACKING1);
+                debugIndex++;
             }
         }
 
