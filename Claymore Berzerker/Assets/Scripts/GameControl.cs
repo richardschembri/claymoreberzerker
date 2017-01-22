@@ -5,8 +5,9 @@ using UnityEngine;
 public class GameControl : MonoBehaviour {
 
     public static bool IsPaused = false;
-	// Use this for initialization
-	void Start () {
+    public GameObject ModalPopup;
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -62,9 +63,15 @@ public class GameControl : MonoBehaviour {
 
     }
 
-
-    void RestartGame()
+    public void RestartGame()
     {
         SendGlobalMessage("OnRestartGame");
     }
+
+    public void OnGameOver()
+    {
+        ModalPopup.SetActive(true);
+    }
+
+
 }
