@@ -30,6 +30,10 @@ public class Berzerker : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (GameControl.IsPaused)
+        {
+            return;
+        }
         if (!IsAlive)
         {
             var lp = this.gameObject.transform.localPosition;
@@ -51,12 +55,12 @@ public class Berzerker : MonoBehaviour {
             }
         }
 
-        if (Input.GetKeyUp(KeyCode.R))
-        {
-            Respawn();
-        }
-
 	}
+
+    void OnRestartGame()
+    {
+        Respawn();
+    }
 
     public void Respawn()
     {
@@ -77,6 +81,27 @@ public class Berzerker : MonoBehaviour {
             IsAlive = false;
             BodyParts.SetActive(false);
             FullBody.SetActive(true);
+        }
+    }
+
+
+    void OnPauseGame()
+    {
+        playPauseAnim(true);
+    }
+
+    void OnResumeGame()
+    {
+        playPauseAnim();
+    }
+
+
+    void playPauseAnim(bool pauseAnim = false)
+    {
+        var enemyAnims = this.gameObject.GetComponentsInChildren<Animator>();
+        foreach(var ea in enemyAnims)
+        {
+            ea.enabled = !pauseAnim;
         }
     }
 

@@ -34,14 +34,20 @@ public class EnemyLogic : MonoBehaviour {
 	void Start () {
         speed = Random.Range(minspeed, maxspeed);
 	}
+
+    void OnRestartGame()
+    {
+        Debug.Log("OnRestartGame");
+        Destroy(this.gameObject);
+    }
 	
 	// Update is called once per frame
-	void Update () { 
-
-        if (Input.GetKeyUp(KeyCode.R))
+	void Update () {
+        if (GameControl.IsPaused)
         {
-            Destroy(this.gameObject);
+            return;
         }
+
         var lp = this.gameObject.transform.localPosition;
         if (this.gameObject.transform.localScale.x < 0)
         {
@@ -56,13 +62,6 @@ public class EnemyLogic : MonoBehaviour {
         {
             Destroy(this.gameObject);
         }
-
-        /*
-        if (Player.transform.localPosition.x < gameObject.transform.localPosition.x)
-        {
-            TorsoAnim.SetTrigger(Berzerker.ANIM_TRIGGER_ISATTACKING1);
-        }
-        */
 
 	}
 
@@ -88,6 +87,26 @@ public class EnemyLogic : MonoBehaviour {
         if (collision.tag == "PlayerWeapon")
         {
             Die();
+        }
+    }
+
+    void OnPauseGame()
+    {
+        playPauseAnim(true);
+    }
+
+    void OnResumeGame()
+    {
+        playPauseAnim();
+    }
+
+
+    void playPauseAnim(bool pauseAnim = false)
+    {
+        var enemyAnims = this.gameObject.GetComponentsInChildren<Animator>();
+        foreach(var ea in enemyAnims)
+        {
+            ea.enabled = !pauseAnim;
         }
     }
 }

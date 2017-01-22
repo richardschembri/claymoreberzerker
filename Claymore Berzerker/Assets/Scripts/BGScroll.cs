@@ -11,6 +11,10 @@ public class BGScroll : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (GameControl.IsPaused)
+        {
+            return;
+        }
 		//Keep looping between 0 and 1
 		float x = Mathf.Repeat (Time.time * speed, 1f);
 		//Create the offset

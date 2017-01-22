@@ -123,10 +123,12 @@
     <Compile Include="Assets\Scripts\Berzerker.cs" />
     <Compile Include="Assets\Scripts\BerzerkerAttackLogic.cs" />
     <Compile Include="Assets\Scripts\EnemyLogic.cs" />
+    <Compile Include="Assets\Scripts\GameControl.cs" />
     <Compile Include="Assets\Scripts\ScoreManager.cs" />
     <Compile Include="Assets\Scripts\Spawner.cs" />
     <Compile Include="Assets\Scripts\SpriteLayerOrderHandler.cs" />
     <Compile Include="Assets\Scripts\SwordLogic.cs" />
+    <Compile Include="Assets\Scripts\UI\PauseButtonUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Example Games\2D Scrolling Shooter\Fonts\PressStart2P-Regular\OFL.txt" />

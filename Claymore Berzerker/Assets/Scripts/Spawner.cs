@@ -31,14 +31,15 @@ public class Spawner : MonoBehaviour {
     IEnumerator SpawnGameObject()
     {
         yield return new WaitForSeconds(randSpawnTime);
-        var spawnedObject = Instantiate(gameObjectToSpawn);
-
-        spawnedObject.transform.parent = gameObject.transform.parent;
-        spawnedObject.transform.localPosition = gameObject.transform.localPosition;
-        spawnedObject.transform.localScale = gameObject.transform.localScale;
-
         randSpawnTime = generateRandomSpawnTime();
-
         StartCoroutine(SpawnGameObject());
+
+        if (!GameControl.IsPaused)
+        {
+            var spawnedObject = Instantiate(gameObjectToSpawn);
+            spawnedObject.transform.parent = gameObject.transform.parent;
+            spawnedObject.transform.localPosition = gameObject.transform.localPosition;
+            spawnedObject.transform.localScale = gameObject.transform.localScale;
+        }
     }
 }
