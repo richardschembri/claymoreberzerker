@@ -42,4 +42,6 @@ public class Spawner : MonoBehaviour {
             spawnedObject.transform.localScale = gameObject.transform.localScale;
         }
     }
+    
+
 }

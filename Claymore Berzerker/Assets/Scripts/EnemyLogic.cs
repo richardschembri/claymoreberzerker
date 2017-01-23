@@ -7,7 +7,22 @@ public class EnemyLogic : MonoBehaviour {
 	public Animator TorsoAnim;					
     public float minspeed = 0.175f;
     public float maxspeed = 0.25f;
-    private float speed = 0.1f;
+    private float? speed = null;
+    public float Speed
+    {
+        get
+        {
+        if(speed == null)
+            {
+                speed = Random.Range(minspeed, maxspeed); 
+            }
+            return (float)speed;
+        }
+        set
+        {
+            speed = value;
+        }
+    }
     public GameObject FullBody;
     public GameObject BodyParts;
 
@@ -32,7 +47,6 @@ public class EnemyLogic : MonoBehaviour {
     //public Berzerker Player;
 	// Use this for initialization
 	void Start () {
-        speed = Random.Range(minspeed, maxspeed);
 	}
 
     void OnStartNewGame()
@@ -51,11 +65,11 @@ public class EnemyLogic : MonoBehaviour {
         var lp = this.gameObject.transform.localPosition;
         if (this.gameObject.transform.localScale.x < 0)
         {
-            this.gameObject.transform.localPosition = new Vector3(lp.x - speed , lp.y, lp.z);
+            this.gameObject.transform.localPosition = new Vector3(lp.x - Speed , lp.y, lp.z);
         }
         else
         {
-            this.gameObject.transform.localPosition = new Vector3(lp.x + speed , lp.y, lp.z);
+            this.gameObject.transform.localPosition = new Vector3(lp.x + Speed , lp.y, lp.z);
         }
 
         if (this.gameObject.transform.localPosition.x < -2)
@@ -74,6 +88,10 @@ public class EnemyLogic : MonoBehaviour {
 
     public void Die()
     {
+        if (!IsAlive)
+        {
+            return;
+        }
         IsAlive = false;
         BloodSplatter.Play();
         Berzerker.HighScore += EnemyScore;
