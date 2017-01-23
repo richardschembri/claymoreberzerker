@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyLogic : MonoBehaviour {
 
 	public Animator TorsoAnim;					
-    public float minspeed = 0.1f;
+    public float minspeed = 0.175f;
     public float maxspeed = 0.25f;
     private float speed = 0.1f;
     public GameObject FullBody;
@@ -35,9 +35,9 @@ public class EnemyLogic : MonoBehaviour {
         speed = Random.Range(minspeed, maxspeed);
 	}
 
-    void OnRestartGame()
+    void OnStartNewGame()
     {
-        Debug.Log("OnRestartGame");
+        Debug.Log("OnStartNewGame");
         Destroy(this.gameObject);
     }
 	

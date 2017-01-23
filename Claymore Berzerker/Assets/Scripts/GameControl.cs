@@ -15,7 +15,7 @@ public class GameControl : MonoBehaviour {
 	void Update () {
         if (Input.GetKeyUp(KeyCode.R))
         {
-            RestartGame();
+            StartNewGame();
         }
         if (Input.GetKeyUp(KeyCode.P))
         {
@@ -63,12 +63,22 @@ public class GameControl : MonoBehaviour {
 
     }
 
-    public void RestartGame()
+    public void StartNewGame()
     {
-        SendGlobalMessage("OnRestartGame");
+        SendGlobalMessage("OnStartNewGame");
     }
 
-    public void OnGameOver()
+    void OnStartNewGame()
+    {
+        ModalPopup.SetActive(false);
+    }
+
+    public void GameOver()
+    {
+        SendGlobalMessage("OnGameOver");
+    }
+
+    void OnGameOver()
     {
         ModalPopup.SetActive(true);
     }

@@ -57,7 +57,7 @@ public class Berzerker : MonoBehaviour {
 
 	}
 
-    void OnRestartGame()
+    void OnStartNewGame()
     {
         Respawn();
     }
@@ -81,6 +81,9 @@ public class Berzerker : MonoBehaviour {
             IsAlive = false;
             BodyParts.SetActive(false);
             FullBody.SetActive(true);
+            var gc = GameObject.FindObjectOfType<GameControl>();
+            gc.GameOver();
+            
         }
     }
 
