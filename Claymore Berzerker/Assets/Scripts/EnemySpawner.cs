@@ -9,6 +9,7 @@ public class EnemySpawner : MonoBehaviour {
     public float SpawnTimeOffset = 2f;
 
     private float randSpawnTime = 5f;
+    public int CountDown = 10;
 	// Use this for initialization
 	void Start () {
         randSpawnTime = generateRandomSpawnTime();
@@ -37,17 +38,22 @@ public class EnemySpawner : MonoBehaviour {
 
         if (!GameControl.IsPaused)
         {
+            CountDown--;
             var spawnedObject = Instantiate(gameObjectToSpawn);
             spawnedObject.transform.parent = gameObject.transform.parent;
             spawnedObject.transform.localPosition = gameObject.transform.localPosition;
             spawnedObject.transform.localScale = gameObject.transform.localScale;
-            if (Random.Range(0, 5) >= 4)
+            if (CountDown < 0)
             {
-                SpawnBuddy(spawnedObject);
-            }
-            if (Random.Range(0, 10) >= 8)
-            {
-                SpawnBuddy(spawnedObject, false);
+                if (Random.Range(0, 5) >= 4)
+                {
+                    SpawnBuddy(spawnedObject);
+                }
+                else if (Random.Range(0, 10) >= 9)
+                {
+                    SpawnBuddy(spawnedObject);
+                    SpawnBuddy(spawnedObject, false);
+                }
             }
         }
     }
