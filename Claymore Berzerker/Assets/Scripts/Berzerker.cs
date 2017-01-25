@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Berzerker : MonoBehaviour {
 
-    public static int HighScore = 0;
+    //public static int HighScore = 0;
 
 
     float startX = 0;
@@ -71,7 +71,7 @@ public class Berzerker : MonoBehaviour {
 
         var lp = gameObject.transform.localPosition;
         gameObject.transform.localPosition = new Vector3(startX, lp.y, lp.z);
-        Berzerker.HighScore = 0;
+        ScoreManager.Instance.ResetScore();
     }
 
     void OnTriggerEnter2D(Collider2D collision)

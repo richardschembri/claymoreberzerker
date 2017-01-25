@@ -94,7 +94,8 @@ public class EnemyLogic : MonoBehaviour {
         }
         IsAlive = false;
         BloodSplatter.Play();
-        Berzerker.HighScore += EnemyScore;
+        //Berzerker.HighScore += EnemyScore;
+        ScoreManager.Instance.IncrementScore(EnemyScore);
         BodyParts.SetActive(false);
         FullBody.SetActive(true);
     }
