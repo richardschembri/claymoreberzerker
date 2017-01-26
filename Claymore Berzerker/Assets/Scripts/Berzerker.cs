@@ -71,7 +71,6 @@ public class Berzerker : MonoBehaviour {
 
         var lp = gameObject.transform.localPosition;
         gameObject.transform.localPosition = new Vector3(startX, lp.y, lp.z);
-        ScoreManager.Instance.ResetScore();
     }
 
     void OnTriggerEnter2D(Collider2D collision)

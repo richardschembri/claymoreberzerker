@@ -29,7 +29,6 @@ public class EnemySpawner : MonoBehaviour {
 	    	
 	}
 
-
     IEnumerator SpawnGameObject()
     {
         yield return new WaitForSeconds(randSpawnTime);
@@ -76,4 +75,10 @@ public class EnemySpawner : MonoBehaviour {
         }
         spawnedObject.transform.localScale = gameObject.transform.localScale;
     }
+
+    void OnStartNewGame()
+    {
+        CountDown = 10;
+    } 
+
 }

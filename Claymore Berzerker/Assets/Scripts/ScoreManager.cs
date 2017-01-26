@@ -8,7 +8,7 @@ public class ScoreManager : MonoBehaviour {
     public const int HIGHSCORE_COUNT = 10;
     public const string HIGHSCORE_KEY = "Highscore";
     public Text CurrentScoreText;
-    public Text HighestScoreText;
+    public Text TopScore;
 
     int currentScore = 0;
     
@@ -39,17 +39,19 @@ public class ScoreManager : MonoBehaviour {
             CurrentScoreText.text = currentScore.ToString();
         }
     }
-    int HighestScore
+
+    Dictionary<string, int> GetHighScores()
     {
-        get
+        var highScoreDict = new Dictionary<string, int>();
+
+        for (int i = 0; i < HIGHSCORE_COUNT; i++)
         {
-            return PlayerPrefs.GetInt("Score1", 0);
+            var key = i.ToString() + HIGHSCORE_KEY;
+            highScoreDict.Add(key, PlayerPrefs.GetInt(key, 0));
         }
-        set
-        {
-            PlayerPrefs.SetInt("Score1", value);
-            HighestScoreText.text = value.ToString();
-        }
+
+        return highScoreDict; 
+        
     }
 
     void AddScore(int score )
@@ -62,14 +64,15 @@ public class ScoreManager : MonoBehaviour {
         //newName = name;
         for (int i = 0; i < HIGHSCORE_COUNT; i++)
         {
-            if (PlayerPrefs.HasKey(i.ToString() + HIGHSCORE_KEY))
+            var key = i.ToString() + HIGHSCORE_KEY;
+            if (PlayerPrefs.HasKey(key))
             {
-                if (PlayerPrefs.GetInt(i.ToString() + HIGHSCORE_KEY) < newScore)
+                if (PlayerPrefs.GetInt(key) < newScore)
                 {
                     // new score is higher than the stored score
-                    oldScore = PlayerPrefs.GetInt(i.ToString() + HIGHSCORE_KEY);
+                    oldScore = PlayerPrefs.GetInt(key);
                     //oldName = PlayerPrefs.GetString(i + "HScoreName");
-                    PlayerPrefs.SetInt(i.ToString() + HIGHSCORE_KEY, newScore);
+                    PlayerPrefs.SetInt(key, newScore);
                     //PlayerPrefs.SetString(i + "HScoreName", newName);
                     newScore = oldScore;
                     //newName = oldName;
@@ -86,17 +89,24 @@ public class ScoreManager : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         Instance = this;
         ResetScore();
-        var foo = new List<int>();
-        
+
+    }
+
+    void getTopScore()
+    {
+        var topScoreKey = "1" + HIGHSCORE_KEY;
+        var topScore = PlayerPrefs.GetInt(topScoreKey);
+        TopScore.text = topScore.ToString();
     }
 
     public void ResetScore()
     {
         CurrentScore = 0;
-        HighestScoreText.text = HighestScore.ToString();
+        getTopScore();
     }
 
     // Update is called once per frame
@@ -106,9 +116,11 @@ public class ScoreManager : MonoBehaviour {
     public void IncrementScore(int by)
     {
         CurrentScore += by;
-        if (HighestScore < CurrentScore)
-        {
-            HighestScore = CurrentScore; 
-        }
+    }
+
+    void OnGameOver()
+    {
+        AddScore(CurrentScore);
+        ResetScore();
     }
 }
