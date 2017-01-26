@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,7 @@ public class ScoreManager : MonoBehaviour {
     public const string HIGHSCORE_KEY = "Highscore";
     public Text CurrentScoreText;
     public Text TopScore;
+    public Text TopScores;
 
     int currentScore = 0;
     
@@ -40,7 +42,7 @@ public class ScoreManager : MonoBehaviour {
         }
     }
 
-    Dictionary<string, int> GetHighScores()
+    Dictionary<string, int> GetTopScores()
     {
         var highScoreDict = new Dictionary<string, int>();
 
@@ -52,6 +54,27 @@ public class ScoreManager : MonoBehaviour {
 
         return highScoreDict; 
         
+    }
+
+    void ShowTopScores()
+    {
+        var topScoresDict = GetTopScores();
+        var sbTopScores = new StringBuilder();
+        int i = 1;
+        foreach (var e in topScoresDict)
+        {
+            if (i < 10)
+            {
+                sbTopScores.AppendLine(string.Format("{0}.  {1}", i, e.Value));
+            }
+            else
+            {
+                sbTopScores.AppendLine(string.Format("{0}. {1}", i, e.Value));
+            }
+            i++;
+        }
+
+        TopScores.text = sbTopScores.ToString();
     }
 
     void AddScore(int score )
@@ -98,7 +121,7 @@ public class ScoreManager : MonoBehaviour {
 
     void getTopScore()
     {
-        var topScoreKey = "1" + HIGHSCORE_KEY;
+        var topScoreKey = "0" + HIGHSCORE_KEY;
         var topScore = PlayerPrefs.GetInt(topScoreKey);
         TopScore.text = topScore.ToString();
     }
@@ -121,6 +144,7 @@ public class ScoreManager : MonoBehaviour {
     void OnGameOver()
     {
         AddScore(CurrentScore);
+        ShowTopScores();
         ResetScore();
     }
 }

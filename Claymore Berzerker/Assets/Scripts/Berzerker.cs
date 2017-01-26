@@ -46,6 +46,7 @@ public class Berzerker : MonoBehaviour {
                 this.gameObject.transform.localPosition = new Vector3(lp.x + speed, lp.y, lp.z);
             }
 
+            /*
             for (int i = 0; i < Input.touchCount; ++i)
             {
                 if (Input.GetTouch(i).phase == TouchPhase.Began)
@@ -53,6 +54,7 @@ public class Berzerker : MonoBehaviour {
                     Respawn();
                 }
             }
+            */
         }
 
 	}
