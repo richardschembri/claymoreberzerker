@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameControl : MonoBehaviour {
 
     public static bool IsPaused = false;
     public GameObject ModalPopup;
+    public Button RestartButton;
     // Use this for initialization
     void Start () {
 		
@@ -73,6 +75,18 @@ public class GameControl : MonoBehaviour {
         ModalPopup.SetActive(false);
     }
 
+    void OnPauseGame()
+    {
+        ModalPopup.SetActive(true);
+        RestartButton.gameObject.SetActive(false);
+    }
+
+    void OnResumeGame()
+    {
+        ModalPopup.SetActive(false);
+        RestartButton.gameObject.SetActive(true);
+    }
+
     public void GameOver()
     {
         SendGlobalMessage("OnGameOver");
@@ -81,6 +95,7 @@ public class GameControl : MonoBehaviour {
     void OnGameOver()
     {
         ModalPopup.SetActive(true);
+        
     }
 
 
