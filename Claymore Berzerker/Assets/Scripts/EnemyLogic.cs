@@ -27,6 +27,7 @@ public class EnemyLogic : MonoBehaviour {
     public GameObject BodyParts;
 
     public AudioSource AttackSound;
+    public AudioSource[] DeathSounds;
 
     public ParticleSystem BloodSplatter;
 
@@ -51,7 +52,6 @@ public class EnemyLogic : MonoBehaviour {
 
     void OnStartNewGame()
     {
-        Debug.Log("OnStartNewGame");
         Destroy(this.gameObject);
     }
 	
@@ -94,6 +94,8 @@ public class EnemyLogic : MonoBehaviour {
         }
         IsAlive = false;
         BloodSplatter.Play();
+        var deathSound = DeathSounds[Random.Range(0, DeathSounds.Length)];
+        deathSound.Play();
         //Berzerker.HighScore += EnemyScore;
         ScoreManager.Instance.IncrementScore(EnemyScore);
         BodyParts.SetActive(false);
