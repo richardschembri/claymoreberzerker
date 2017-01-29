@@ -2,15 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Advertisements;
 
 public class GameControl : MonoBehaviour {
 
     public static bool IsPaused = false;
     public GameObject ModalPopup;
     public Button RestartButton;
+    public int AdCountDown = 5;
+    int adCountDownIndex = 5;
+    public Image AdIcon;
+    private bool showAdvert = false;
+    private bool ShowAdvert
+    {
+
+        get
+        {
+            return showAdvert; 
+        }
+        set
+        {
+            showAdvert = value;
+            AdIcon.gameObject.SetActive(value);
+        }
+    }
+
+
     // Use this for initialization
     void Start () {
-		
+        adCountDownIndex = AdCountDown; 
 	}
 	
 	// Update is called once per frame
@@ -90,11 +110,21 @@ public class GameControl : MonoBehaviour {
     public void GameOver()
     {
         SendGlobalMessage("OnGameOver");
+
     }
 
     void OnGameOver()
     {
         ModalPopup.SetActive(true);
+        adCountDownIndex--;
+        if (adCountDownIndex <= 0)
+        {
+            if (Advertisement.IsReady())
+            {
+                Advertisement.Show();
+            }
+            adCountDownIndex = AdCountDown;
+        }
         
     }
 
