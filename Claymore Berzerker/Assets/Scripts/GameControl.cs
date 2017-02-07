@@ -30,7 +30,8 @@ public class GameControl : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        adCountDownIndex = AdCountDown; 
+        adCountDownIndex = AdCountDown;
+        ShowAdvert = false;
 	}
 	
 	// Update is called once per frame
@@ -117,11 +118,16 @@ public class GameControl : MonoBehaviour {
     {
         ModalPopup.SetActive(true);
         adCountDownIndex--;
+        if (adCountDownIndex <= 1)
+        {
+            ShowAdvert = true;
+        }
         if (adCountDownIndex <= 0)
         {
             if (Advertisement.IsReady())
             {
                 Advertisement.Show();
+                ShowAdvert = false;
             }
             adCountDownIndex = AdCountDown;
         }
