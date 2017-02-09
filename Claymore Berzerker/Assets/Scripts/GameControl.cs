@@ -88,6 +88,24 @@ public class GameControl : MonoBehaviour {
 
     public void StartNewGame()
     {
+        if (ShowAdvert)
+        {
+            if (Advertisement.IsReady())
+            {
+                Advertisement.Show();
+                ShowAdvert = false;
+                StartCoroutine(StartAfterAvert());
+            }
+        }
+        else
+        {
+            SendGlobalMessage("OnStartNewGame");
+        }
+    }
+
+    IEnumerator StartAfterAvert()
+    {
+        yield return new WaitUntil(() => !Advertisement.isShowing);
         SendGlobalMessage("OnStartNewGame");
     }
 
@@ -117,17 +135,10 @@ public class GameControl : MonoBehaviour {
     {
         ModalPopup.SetActive(true);
         adCountDownIndex--;
-        if (adCountDownIndex <= 1)
-        {
-            ShowAdvert = true;
-        }
+
         if (adCountDownIndex <= 0)
         {
-            if (Advertisement.IsReady())
-            {
-                Advertisement.Show();
-                ShowAdvert = false;
-            }
+            ShowAdvert = true;
             adCountDownIndex = AdCountDown;
         }
         
