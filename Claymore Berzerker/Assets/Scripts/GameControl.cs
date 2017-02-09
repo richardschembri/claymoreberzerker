@@ -111,7 +111,6 @@ public class GameControl : MonoBehaviour {
     public void GameOver()
     {
         SendGlobalMessage("OnGameOver");
-
     }
 
     void OnGameOver()
