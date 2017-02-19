@@ -1,11 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2015
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Claymore Berzerker.Plugins", "Claymore Berzerker.Plugins.csproj", "{DF32DA91-F62F-0163-39DA-9DE408808E2D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Claymore Berzerker", "Claymore Berzerker.csproj", "{F9443ECA-C282-4C98-1485-75AE30310807}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Claymore Berzerker.Editor.Plugins", "Claymore Berzerker.Editor.Plugins.csproj", "{39DA6A69-3214-3441-273D-5209FB856D45}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,18 +9,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DF32DA91-F62F-0163-39DA-9DE408808E2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DF32DA91-F62F-0163-39DA-9DE408808E2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DF32DA91-F62F-0163-39DA-9DE408808E2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DF32DA91-F62F-0163-39DA-9DE408808E2D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F9443ECA-C282-4C98-1485-75AE30310807}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F9443ECA-C282-4C98-1485-75AE30310807}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9443ECA-C282-4C98-1485-75AE30310807}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9443ECA-C282-4C98-1485-75AE30310807}.Release|Any CPU.Build.0 = Release|Any CPU
-		{39DA6A69-3214-3441-273D-5209FB856D45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{39DA6A69-3214-3441-273D-5209FB856D45}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{39DA6A69-3214-3441-273D-5209FB856D45}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{39DA6A69-3214-3441-273D-5209FB856D45}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

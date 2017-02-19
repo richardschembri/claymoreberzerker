@@ -12,6 +12,7 @@ public class GameControl : MonoBehaviour {
     public int AdCountDown = 5;
     int adCountDownIndex = 5;
     public Image AdIcon;
+    public bool TestAds = true;
     private bool showAdvert = false;
     private bool ShowAdvert
     {
@@ -32,7 +33,12 @@ public class GameControl : MonoBehaviour {
     void Start () {
         adCountDownIndex = AdCountDown;
         ShowAdvert = false;
-	}
+
+        if (Advertisement.isSupported && !Advertisement.isInitialized)
+        {
+            Advertisement.Initialize("1285018", TestAds);
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -136,7 +142,7 @@ public class GameControl : MonoBehaviour {
         ModalPopup.SetActive(true);
         adCountDownIndex--;
 
-        if (adCountDownIndex <= 0)
+        if ((adCountDownIndex <= 0) && (Advertisement.IsReady()))
         {
             ShowAdvert = true;
             adCountDownIndex = AdCountDown;
