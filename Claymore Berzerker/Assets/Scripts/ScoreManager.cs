@@ -61,15 +61,31 @@ public class ScoreManager : MonoBehaviour {
         var topScoresDict = GetTopScores();
         var sbTopScores = new StringBuilder();
         int i = 1;
+        bool currScoreDisplayed = false;
         foreach (var e in topScoresDict)
         {
             if (i < 10)
             {
-                sbTopScores.AppendLine(string.Format("{0}.  {1}", i, e.Value));
+                if (e.Value == CurrentScore && !currScoreDisplayed)
+                {
+                    sbTopScores.AppendLine(string.Format("<color=#fff600>{0}.  {1}</color>", i, e.Value));
+                    currScoreDisplayed = true;
+                }
+                else
+                {
+                    sbTopScores.AppendLine(string.Format("{0}.  {1}", i, e.Value));
+                }
             }
             else
             {
-                sbTopScores.AppendLine(string.Format("{0}. {1}", i, e.Value));
+                if (e.Value == CurrentScore && !currScoreDisplayed)
+                {
+                    sbTopScores.AppendLine(string.Format("<color=#fff600>{0}. {1}</color>", i, e.Value));
+                }
+                else
+                {
+                    sbTopScores.AppendLine(string.Format("{0}. {1}", i, e.Value));
+                }
             }
             i++;
         }
@@ -145,6 +161,10 @@ public class ScoreManager : MonoBehaviour {
     {
         AddScore(CurrentScore);
         ShowTopScores();
+    }
+
+    void OnStartNewGame()
+    {
         ResetScore();
     }
 }
