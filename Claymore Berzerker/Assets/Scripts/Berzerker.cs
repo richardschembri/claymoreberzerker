@@ -5,6 +5,7 @@ public class Berzerker : MonoBehaviour {
 
     //public static int HighScore = 0;
 
+    public AudioSource[] DeathSounds;
 
     float startX = 0;
     public float speed = 1f;
@@ -82,9 +83,11 @@ public class Berzerker : MonoBehaviour {
             IsAlive = false;
             BodyParts.SetActive(false);
             FullBody.SetActive(true);
+            var deathSound = DeathSounds[Random.Range(0, DeathSounds.Length)];
+            deathSound.Play();
             var gc = GameObject.FindObjectOfType<GameControl>();
             gc.GameOver();
-            
+
         }
     }
 

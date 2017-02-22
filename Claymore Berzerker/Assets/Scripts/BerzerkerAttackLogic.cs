@@ -22,6 +22,10 @@ public class BerzerkerAttackLogic : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        if (GameControl.IsPaused)
+        {
+            return;
+        }
 
         if (Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(1))
         {

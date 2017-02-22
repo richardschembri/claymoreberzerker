@@ -14,7 +14,17 @@ public class EnemyLogic : MonoBehaviour {
         {
         if(speed == null)
             {
-                speed = Random.Range(minspeed, maxspeed); 
+                speed = Random.Range(minspeed, maxspeed);
+                var speedDiff = maxspeed - minspeed;
+                var currSpeedDiff = speed - minspeed;
+                if (currSpeedDiff < speedDiff / 4)
+                {
+                    AttackRange.gameObject.transform.localScale = new Vector3(0.8f, 1f, 1f);
+                    Debug.Log("Reduced Attack Range");
+                }else if(currSpeedDiff > (speedDiff * 3) / 4){
+                    AttackRange.gameObject.transform.localScale = new Vector3(1.2f, 1f, 1f);
+                    Debug.Log("Increased Attack Range");
+                }
             }
             return (float)speed;
         }
@@ -25,6 +35,8 @@ public class EnemyLogic : MonoBehaviour {
     }
     public GameObject FullBody;
     public GameObject BodyParts;
+
+    public BoxCollider2D AttackRange;
 
     public AudioSource AttackSound;
     public AudioSource[] DeathSounds;
