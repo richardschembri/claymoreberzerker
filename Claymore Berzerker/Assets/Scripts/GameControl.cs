@@ -36,7 +36,7 @@ public class GameControl : MonoBehaviour {
 
         if (Advertisement.isSupported && !Advertisement.isInitialized)
         {
-            Advertisement.Initialize("1285018", TestAds);
+            Advertisement.Initialize("1285017", TestAds);
         }
     }
 	
