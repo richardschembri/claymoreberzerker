@@ -137,6 +137,12 @@ public class GameControl : MonoBehaviour {
         SendGlobalMessage("OnGameOver");
     }
 
+    public void ExitGame()
+    {
+        Debug.Log("Closing Application");
+        Application.Quit();
+    }
+
     void OnGameOver()
     {
         ModalPopup.SetActive(true);
